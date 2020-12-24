@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 import com.cg.employeepayrollapp.dto.EmployeePayrollDTO;
 import com.cg.employeepayrollapp.dto.ResponseDTO;
 import com.cg.employeepayrollapp.model.EmployeePayrollData;
@@ -23,6 +25,7 @@ import com.cg.employeepayrollapp.services.IEmployeePayrollService;
 
 @RestController
 @RequestMapping("/employeepayrollservice")
+@Slf4j
 public class EmployeePayrollController {
 
 	@Autowired
@@ -46,6 +49,7 @@ public class EmployeePayrollController {
 
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> addEmployeePayrollData( @Valid @RequestBody EmployeePayrollDTO employeeDTO) {
+		log.debug("Employee DTO: " + employeeDTO.toString());
 		EmployeePayrollData empData = null;
 		empData = employeePayrollService.createEmployeePayrollData(employeeDTO);
 		ResponseDTO dto = new ResponseDTO("Created Employee Payroll Data Successfully ", empData);
