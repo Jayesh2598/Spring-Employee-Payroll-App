@@ -40,6 +40,11 @@ private List<EmployeePayrollData> empPayrollList=new ArrayList<>();
 		EmployeePayrollData empData = this.getEmployeePayrollDataById(empId);
 		empData.setName(empPayrollDTO.name);
 		empData.setSalary(empPayrollDTO.salary);
+		empData.setGender(empPayrollDTO.gender);
+		empData.setStartDate(empPayrollDTO.startDate);
+		empData.setNote(empPayrollDTO.note);
+		empData.setProfilePic(empPayrollDTO.profilePic);
+		empData.setDepartments(empPayrollDTO.departments);
 		empPayrollList.set(empId-1, empData);
 		return empData;
 	}
